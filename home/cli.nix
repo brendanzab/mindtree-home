@@ -39,7 +39,6 @@ in {
         pciutils # Provides lspci - added to debug wifi not working
         platformio # For running daniel's arduino sketch for morph power supply mgmt.
         protonvpn-cli
-        rustup
         screen # to login to chip via serial
         sysbench
         tree
@@ -51,10 +50,7 @@ in {
 
       # Add some dirs to PATH.
       sessionPath = [
-        "~/.cabal/bin"
         "~/.cargo/bin"
-        "~/.local/bin"
-        "~/applications"
       ];
 
       # ENV vars that should always be present.
