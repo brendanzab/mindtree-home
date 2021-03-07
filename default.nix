@@ -8,15 +8,17 @@
   ];
 
   nixpkgs.config = {
-    permittedInsecurePackages =
-      if config.mindtree.de.enable then config.mindtree.de.permittedInsecurePkgNames else [];
-
-    allowUnfreePredicate =
-      let
-        unfreeCliPkgNames = config.mindtree.cli.unfreePkgNames;
-        unfreeDePkgNames = if config.mindtree.de.enable then config.mindtree.de.unfreePkgNames else [];
-        unfreePkgNames = unfreeCliPkgNames ++ unfreeDePkgNames;
-      in
-        pkg: builtins.elem (lib.getName pkg) unfreePkgNames;
+    permittedInsecurePackages = if config.mindtree.de.enable then
+      config.mindtree.de.permittedInsecurePkgNames
+    else
+      [ ];
+    allowUnfreePredicate = let
+      unfreeCliPkgNames = config.mindtree.cli.unfreePkgNames;
+      unfreeDePkgNames = if config.mindtree.de.enable then
+        config.mindtree.de.unfreePkgNames
+      else
+        [ ];
+      unfreePkgNames = unfreeCliPkgNames ++ unfreeDePkgNames;
+    in pkg: builtins.elem (lib.getName pkg) unfreePkgNames;
   };
 }
