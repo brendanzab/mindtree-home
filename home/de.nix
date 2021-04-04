@@ -25,6 +25,8 @@ in {
       default = [
         # Required for obinskit.
         "electron-3.1.13"
+        # Required for zeroad.
+        "spidermonkey-38.8.0"
       ];
     };
 

@@ -9,6 +9,7 @@
       minecraft
       protontricks
       wine-staging # For testing `auracle` sound card control software from iConnectivity.
+      zeroad
     ];
   };
 }
