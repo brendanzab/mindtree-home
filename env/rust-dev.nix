@@ -77,6 +77,7 @@ stdenv.mkDerivation {
     cargo-flash
     cargo-generate # wasm tute
     cmake
+    crate2nix
     gcc
     gnumake
     graphviz # visualise dep graph (cargo-deps)
