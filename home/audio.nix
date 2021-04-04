@@ -11,6 +11,7 @@
       mixxx # DJ mixer
       noise-repellent
       paulstretch
+      puredata
       sfizz # sfz sampler
       supercollider
       surge
@@ -26,7 +27,6 @@
       # nixpkgs.
       (callPackage /home/mindtree/programming/nix/harvid/harvid.nix {})
       (callPackage /home/mindtree/programming/nix/xjadeo/xjadeo.nix {})
-      #(callPackage /home/mindtree/programming/nix/vital-bin/vital.nix {})
       (callPackage /home/mindtree/programming/nix/distrho-ports-master/distrho-ports-master.nix {})
     ];
   };
