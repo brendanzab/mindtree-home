@@ -3,8 +3,8 @@ let
   # Provides `rust-bin` - a declarative alternative to rustup.
   rust-overlay = import (fetchTarball {
     url =
-      "https://github.com/oxalica/rust-overlay/archive/24a0f16207369d0a8a295e2b69a1b29ad319b427.tar.gz";
-    sha256 = "0a072f7n0r4zyrkrgd5rp188s005idnj99h2dl6yy9ixc44sr88y";
+      "https://github.com/oxalica/rust-overlay/archive/08263e3fa955acbcb6612c00d920d45e517b242d.tar.gz";
+    sha256 = "05y27mcghknc9fn0904ijjfqi2fnbiiiyhavklq2p7arakjmxzbf";
   });
 
   # Provide the overlay to nixpkgs.
@@ -14,7 +14,7 @@ let
   # Customised rust installation.
   # This can be thought of as a declarative alternative to rustup.
   # Aggregate of all default rust components (cargo, rustc, etc).
-  rust = pkgs.rust-bin.stable."1.50.0".rust.override {
+  rust = pkgs.rust-bin.stable."1.51.0".default.override {
     extensions = [ "llvm-tools-preview" ];
     targets = [ "thumbv7em-none-eabihf" "thumbv7m-none-eabi" ];
   };
