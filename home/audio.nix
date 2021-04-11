@@ -4,30 +4,31 @@
   };
   config = lib.mkIf config.mindtree.de.audio.enable {
     home.packages = with pkgs; [
-      ardour
+      (ardour.override { videoSupport = true; })
       calf
+      carla
       helm
       lsp-plugins
       mixxx # DJ mixer
       noise-repellent
       paulstretch
-      puredata
+      # puredata
+      qjackctl
       sfizz # sfz sampler
-      supercollider
+      # supercollider
       surge
       swh_lv2
+      vmpk # virtual midi keyboard
       x42-avldrums
       x42-gmsynth
       x42-plugins
       zam-plugins # Some random plugins I'm about to try
       zynaddsubfx # Plugin
 
-      # TODO:
-      # switch to `(ardour.override { videoSupport = true; })` when it lands in
-      # nixpkgs.
-      (callPackage /home/mindtree/programming/nix/harvid/harvid.nix {})
-      (callPackage /home/mindtree/programming/nix/xjadeo/xjadeo.nix {})
-      (callPackage /home/mindtree/programming/nix/distrho-ports-master/distrho-ports-master.nix {})
+      # Remove this in favour of `puredata` above once the
+      # `fix-jack-client-name-len` patch is merged into the pure data, is
+      # published in a new version and the new version is available in nixpkgs.
+      (callPackage /home/mindtree/programming/nix/puredata/puredata.nix {})
     ];
   };
 }
