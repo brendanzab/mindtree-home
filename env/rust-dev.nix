@@ -34,7 +34,7 @@ let
         inherit pname version;
         sha256 = "02pqahggcj1kg8yacrvmnkir9n3xw96cjhq024c9p5gw5sz7xhnn";
       };
-      cargoSha256 = "1bzi3qkj0d9c1h7rxlcjy80ql3ba0drpq3744cmyrxa58q81b2qw";
+      cargoSha256 = "1381d0x4ziqxxr6sbafy8l9sv5szxpw3qrcz6h5nw8w40hmp364i";
     };
 
   cargo-embed = with pkgs;
@@ -47,7 +47,7 @@ let
       };
       nativeBuildInputs = [ pkg-config ];
       buildInputs = [ libusb ];
-      cargoSha256 = "129ad52v4k52sxi5gbx9660lmlz3ahwvj8cyjacwpr7zfw14sydf";
+      cargoSha256 = "02bq3p8jml0wvfk5n4zks94fbz8ql0qqmc0qxf97kzj3gj6bdb7l";
     };
 
   cargo-flash = with pkgs;
@@ -60,7 +60,7 @@ let
       };
       nativeBuildInputs = [ pkg-config ];
       buildInputs = [ libusb ];
-      cargoSha256 = "1y20zrywwsra4y3ph9rj2q0f7bwsinhkgyh5ms551zccl97z8c4r";
+      cargoSha256 = "1xykwanvkkshiil0y9fari5fvqf1rj4awjp2f7ajk497nxixv1r5";
     };
 
 in with pkgs;
