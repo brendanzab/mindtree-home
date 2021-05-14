@@ -27,12 +27,9 @@ in {
         gdb
         glxinfo
         graphviz
-        inetutils # ftp for working with dante brooklyn II
         ipfs
-        iw # For trying to debug why my wifi device won't show
         libva-utils
         morph # Lighter, declarative alternative to nixops for deployment.
-        #nmap # Work out how to have both this and `nmap-graphical`
         netcat # For sending basic TCP packets.
         nixfmt
         nodejs
