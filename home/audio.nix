@@ -7,6 +7,7 @@
       (ardour.override { videoSupport = true; })
       calf
       carla
+      geonkick
       helm
       lsp-plugins
       mixxx # DJ mixer

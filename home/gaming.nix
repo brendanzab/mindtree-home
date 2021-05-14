@@ -5,6 +5,7 @@
   config = lib.mkIf config.mindtree.de.gaming.enable {
     home.packages = with pkgs; [
       cataclysm-dda
+      faudio # DirectX audio wrapper for skyrim
       lutris
       minecraft
       protontricks

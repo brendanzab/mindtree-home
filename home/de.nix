@@ -53,8 +53,6 @@ in {
       bitwarden
       # blender
       deluge
-      faudio # DirectX audio wrapper for skyrim
-      geonkick
       gimp
       gnome3.adwaita-icon-theme
       gnome3.gnome-bluetooth
