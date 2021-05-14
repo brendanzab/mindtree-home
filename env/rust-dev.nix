@@ -3,8 +3,8 @@ let
   # Provides `rust-bin` - a declarative alternative to rustup.
   rust-overlay = import (fetchTarball {
     url =
-      "https://github.com/oxalica/rust-overlay/archive/08263e3fa955acbcb6612c00d920d45e517b242d.tar.gz";
-    sha256 = "05y27mcghknc9fn0904ijjfqi2fnbiiiyhavklq2p7arakjmxzbf";
+      "https://github.com/oxalica/rust-overlay/archive/a3873f83ed5fe58c4c6af09700d27b54aa19b986.tar.gz";
+    sha256 = "07hll4yalziyzd68gg518kmxs6y31bb2y3ilp1hw4lpbj1jyj4k7";
   });
 
   # Provide the overlay to nixpkgs.
