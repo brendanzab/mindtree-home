@@ -6,7 +6,6 @@ let
 in {
   imports = [
     ./audio.nix
-    ./firefox.nix
     ./gaming.nix
     ./gnome-terminal.nix
     ./gtk.nix
@@ -53,11 +52,12 @@ in {
       bitwarden
       # blender
       deluge
+      firefox-wayland
       gimp
       gnome3.adwaita-icon-theme
       gnome3.gnome-bluetooth
       gnome3.gnome-power-manager
-      gnome3.gnome-todo
+      # gnome3.gnome-todo
       gnome3.gnome-tweak-tool
       gnomeExtensions.gsconnect
       gst_all_1.gst-libav # trying to get AIFF files working in nautilus preview
@@ -66,7 +66,7 @@ in {
       kicad
       libreoffice
       nmap-graphical
-      obinskit # Anne Pro 2 configuration.
+      # obinskit # Anne Pro 2 configuration.
       signal-desktop
       soulseekqt
       spotify
@@ -76,7 +76,6 @@ in {
       wireshark
     ];
     mindtree.de.audio.enable = lib.mkDefault true;
-    mindtree.de.firefox.enable = lib.mkDefault true;
     mindtree.de.gaming.enable = lib.mkDefault true;
     mindtree.de.gnome-terminal.enable = lib.mkDefault true;
     mindtree.de.gtk.enable = lib.mkDefault true;

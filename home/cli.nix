@@ -31,7 +31,6 @@ in {
         libva-utils
         morph # Lighter, declarative alternative to nixops for deployment.
         netcat # For sending basic TCP packets.
-        nixfmt
         nodejs
         pciutils # Provides lspci - added to debug wifi not working
         platformio # For running daniel's arduino sketch for morph power supply mgmt.

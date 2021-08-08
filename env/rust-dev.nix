@@ -1,10 +1,20 @@
 # An expression producing an environment suitable for rust & nannou dev.
+#
+# `rustChannel` is a function where, given `pkgs.rust-bin` the specific channel
+# version is returned. This allows for re-using the following code between
+# stable rust and nightly rust environments.
+#
+# Test this file with
+# ```
+# nix-shell -E "(import ./rust-dev.nix) { rustChannel = rust-bin: rust-bin.stable.latest; }"
+# ```
+{ rustChannel }:
 let
   # Provides `rust-bin` - a declarative alternative to rustup.
   rust-overlay = import (fetchTarball {
     url =
-      "https://github.com/oxalica/rust-overlay/archive/a3873f83ed5fe58c4c6af09700d27b54aa19b986.tar.gz";
-    sha256 = "07hll4yalziyzd68gg518kmxs6y31bb2y3ilp1hw4lpbj1jyj4k7";
+      "https://github.com/oxalica/rust-overlay/archive/462835d47b901e8d5b445642940de40f6344f4f3.tar.gz";
+    sha256 = "0wjy48l5527za83hmhdlzzw805hy3skwp0w63a7z33ip33yi8sd8";
   });
 
   # Provide the overlay to nixpkgs.
@@ -14,54 +24,30 @@ let
   # Customised rust installation.
   # This can be thought of as a declarative alternative to rustup.
   # Aggregate of all default rust components (cargo, rustc, etc).
-  rust = pkgs.rust-bin.stable."1.51.0".default.override {
-    extensions = [ "llvm-tools-preview" ];
-    targets = [ "thumbv7em-none-eabihf" "thumbv7m-none-eabi" ];
+  # - "thumb*" targets used to target stm32f107 and stm32f407.
+  rust = (rustChannel pkgs.rust-bin).default.override {
+    extensions = [
+      # Used for morph embedded stuff.
+      "llvm-tools-preview"
+      # Used for rust-gpu.
+      "rustc-dev"
+      "rust-src"
+    ];
+    targets = [
+      # Used to target stm32f107 and stm32f407.
+      "thumbv7em-none-eabihf"
+      "thumbv7m-none-eabi"
+    ];
   };
 
   # Use our custom rust installation to build the following rust crates.
   # If we were to just use `rustPlatform`, it would use its own rust version.
+  #
+  # (Currently no custom crates need building for inclusion, all are in nixpkgs)
   rust-platform = pkgs.makeRustPlatform {
     rustc = rust;
     cargo = rust;
   };
-
-  cargo-binutils = with pkgs;
-    rust-platform.buildRustPackage rec {
-      pname = "cargo-binutils";
-      version = "0.3.3";
-      src = fetchCrate {
-        inherit pname version;
-        sha256 = "02pqahggcj1kg8yacrvmnkir9n3xw96cjhq024c9p5gw5sz7xhnn";
-      };
-      cargoSha256 = "1381d0x4ziqxxr6sbafy8l9sv5szxpw3qrcz6h5nw8w40hmp364i";
-    };
-
-  cargo-embed = with pkgs;
-    rust-platform.buildRustPackage rec {
-      pname = "cargo-embed";
-      version = "0.10.1";
-      src = fetchCrate {
-        inherit pname version;
-        sha256 = "1s6qwsqrr9y7hdpn23k2vcic19j4zbwisbxyp8bi7qc68329hf44";
-      };
-      nativeBuildInputs = [ pkg-config ];
-      buildInputs = [ libusb ];
-      cargoSha256 = "02bq3p8jml0wvfk5n4zks94fbz8ql0qqmc0qxf97kzj3gj6bdb7l";
-    };
-
-  cargo-flash = with pkgs;
-    rust-platform.buildRustPackage rec {
-      pname = "cargo-flash";
-      version = "0.10.2";
-      src = fetchCrate {
-        inherit pname version;
-        sha256 = "1mxy3d7f78w137rg1sr8rgsik5dvzyb8h7lli500d1hzafnin7hq";
-      };
-      nativeBuildInputs = [ pkg-config ];
-      buildInputs = [ libusb ];
-      cargoSha256 = "1xykwanvkkshiil0y9fari5fvqf1rj4awjp2f7ajk497nxixv1r5";
-    };
 
 in with pkgs;
 stdenv.mkDerivation {
