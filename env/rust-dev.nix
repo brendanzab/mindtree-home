@@ -49,6 +49,27 @@ let
     cargo = rust;
   };
 
+  naga-cli = with pkgs;
+    rust-platform.buildRustPackage rec {
+      pname = "naga";
+      version = "2021-09-18";
+      src = fetchFromGitHub {
+        owner = "mitchmindtree";
+        repo = "naga";
+        rev = "locked";
+        sha256 = "1q0jpy9y9al8bzs2b0rdssprb24d3z14vk8fvs4f49fcnh9aq5p8";
+      };
+      # src = fetchCrate {
+      #   inherit pname version;
+      #   sha256 = "095ck3jsy6800qfny3dbwrn0ypxv6sbkbmg8xa5vnd5nfag0lvnh";
+      # };
+      nativeBuildInputs = [];
+      buildInputs = [];
+      cargoSha256 = "07vqk3jc0mqr4hval1zdb3rb5n0jhnm1yzjbzgmafniar8hxg45n";
+      #cargoSha256 = "05i0c1ir1w35wkzcagv51fagwxmn61vgsvf72v4lg3b0jx11bck3";
+      doCheck = false;
+    };
+
 in with pkgs;
 stdenv.mkDerivation {
   name = "rust-dev-env";
@@ -73,6 +94,7 @@ stdenv.mkDerivation {
     libv4l # video4linux
     libudev
     libusb # For compiling probe-rs.
+    naga-cli
     nodejs # For Rust+JS+WASM dev.
     openssl
     pkgconfig
