@@ -11,6 +11,9 @@
       protontricks
       wine-staging # For testing `auracle` sound card control software from iConnectivity.
       zeroad
+
+      # TODO: Push this to a remote git repo and fetch it from there?
+      (callPackage /home/mindtree/programming/nix/starsector/starsector.nix {})
     ];
   };
 }

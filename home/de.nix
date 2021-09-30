@@ -24,6 +24,8 @@ in {
       default = [
         # Required for obinskit.
         "electron-3.1.13"
+        # Required for starsector.
+        "libav-11.12"
         # Required for zeroad.
         "spidermonkey-38.8.0"
       ];
