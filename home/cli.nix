@@ -42,6 +42,7 @@ in {
         usbutils # lsusb
         vulkan-tools
         wget
+        whois
       ];
 
       # Add some dirs to PATH.
