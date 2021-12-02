@@ -5,6 +5,8 @@
   config = lib.mkIf config.mindtree.de.gaming.enable {
     home.packages = with pkgs; [
       cataclysm-dda
+      dolphinEmuMaster # GC & Wii Emulator
+      epsxe # PS1 emulator
       faudio # DirectX audio wrapper for skyrim
       lutris
       minecraft

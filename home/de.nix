@@ -26,6 +26,8 @@ in {
         "electron-3.1.13"
         # Required for starsector.
         "libav-11.12"
+        # For the `epsxe` emulator as of 2021-10-09.
+        "openssl-1.0.2u"
         # Required for zeroad.
         "spidermonkey-38.8.0"
       ];
@@ -35,6 +37,7 @@ in {
       description = "The names of all vetted unfree packages.";
       type = lib.types.listOf lib.types.str;
       default = [
+        "epsxe"
         "minecraft-launcher"
         "obinskit"
         "soulseekqt"
@@ -56,11 +59,12 @@ in {
       deluge
       firefox-wayland
       gimp
-      gnome3.adwaita-icon-theme
-      gnome3.gnome-bluetooth
-      gnome3.gnome-power-manager
+      gnome.adwaita-icon-theme
+      gnome.gnome-bluetooth
+      gnome.gnome-boxes
+      gnome.gnome-power-manager
       # gnome3.gnome-todo
-      gnome3.gnome-tweak-tool
+      gnome.gnome-tweak-tool
       gnomeExtensions.gsconnect
       gst_all_1.gst-libav # trying to get AIFF files working in nautilus preview
       gst_all_1.gst-plugins-bad # trying to get AIFF files working in nautilus preview
