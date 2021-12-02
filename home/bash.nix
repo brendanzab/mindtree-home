@@ -5,7 +5,6 @@
     shellAliases = {
       vi = "vim";
       trash = "gio trash";
-      idris-dev = "cd ~/programming/idris/ && nix-shell";
 
       # cd.
       elmdir = "cd ~/programming/elm/";
