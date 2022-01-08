@@ -6,7 +6,7 @@
     home.packages = with pkgs; [
       cataclysm-dda
       dolphinEmuMaster # GC & Wii Emulator
-      epsxe # PS1 emulator
+      #epsxe # PS1 emulator
       faudio # DirectX audio wrapper for skyrim
       lutris
       minecraft
@@ -15,7 +15,7 @@
       zeroad
 
       # TODO: Push this to a remote git repo and fetch it from there?
-      (callPackage /home/mindtree/programming/nix/starsector/starsector.nix {})
+      # (callPackage /home/mindtree/programming/nix/starsector/starsector.nix {})
     ];
   };
 }

@@ -29,7 +29,7 @@
       # Remove this in favour of `puredata` above once the
       # `fix-jack-client-name-len` patch is merged into the pure data, is
       # published in a new version and the new version is available in nixpkgs.
-      (callPackage /home/mindtree/programming/nix/puredata/puredata.nix {})
+      # (callPackage /home/mindtree/programming/nix/puredata/puredata.nix {})
     ];
   };
 }

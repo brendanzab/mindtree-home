@@ -1,0 +1,23 @@
+{
+  "nodes": {
+    "mindtree-home": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-DkIoYGJpxt6F+Vo1swRkpozKg+3neKyo0G94scHng48=",
+        "path": "/nix/store/bj0vvk6yc5xbvaq2pmw1npw1n004ar6v-source",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/bj0vvk6yc5xbvaq2pmw1npw1n004ar6v-source",
+        "type": "path"
+      }
+    },
+    "root": {
+      "inputs": {
+        "mindtree-home": "mindtree-home"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
