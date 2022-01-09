@@ -1,7 +1,8 @@
 # Allows for using the original blethrs python bootloader.
 # Kind of redundant since making `blethrs-link` - a pure-rust alternative.
 
-with import <nixpkgs> {};
+{ pkgs }:
+with pkgs;
 let
   blethrs-python-pkgs = python-packages: with python-packages; [
     crcmod

@@ -4,23 +4,9 @@
 # version is returned. This allows for re-using the following code between
 # stable rust and nightly rust environments.
 #
-# Test this file with
-# ```
-# nix-shell -E "(import ./rust-dev.nix) { rustChannel = rust-bin: rust-bin.stable.latest; }"
-# ```
-{ rustChannel }:
+# Test this file with `nix develop .#rust-dev` (or `rust-dev-nightly`) from the root.
+{ pkgs, rustChannel }:
 let
-  # Provides `rust-bin` - a declarative alternative to rustup.
-  rust-overlay = import (fetchTarball {
-    url =
-      "https://github.com/oxalica/rust-overlay/archive/462835d47b901e8d5b445642940de40f6344f4f3.tar.gz";
-    sha256 = "0wjy48l5527za83hmhdlzzw805hy3skwp0w63a7z33ip33yi8sd8";
-  });
-
-  # Provide the overlay to nixpkgs.
-  # TODO: Replace `<nixpkgs>` with pinned version (i.e. use a flake).
-  pkgs = import <nixpkgs> { overlays = [ rust-overlay ]; };
-
   # Customised rust installation.
   # This can be thought of as a declarative alternative to rustup.
   # Aggregate of all default rust components (cargo, rustc, etc).
@@ -66,7 +52,6 @@ let
       nativeBuildInputs = [];
       buildInputs = [];
       cargoSha256 = "07vqk3jc0mqr4hval1zdb3rb5n0jhnm1yzjbzgmafniar8hxg45n";
-      #cargoSha256 = "05i0c1ir1w35wkzcagv51fagwxmn61vgsvf72v4lg3b0jx11bck3";
       doCheck = false;
     };
 

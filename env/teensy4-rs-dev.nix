@@ -1,5 +1,6 @@
 # An expression producing an environment suitable for rust & nannou dev.
-with import <nixpkgs> {};
+{ pkgs, ... }:
+with pkgs;
 stdenv.mkDerivation {
   name = "teensy4-rs-dev-env";
   buildInputs = [

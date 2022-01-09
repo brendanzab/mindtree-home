@@ -4,7 +4,7 @@ let
 in {
   imports = [
     ./bash.nix
-    ../env/aliases.nix
+    #../env/aliases.nix
     ./git.nix
     ./tmux.nix
     ./vim/vim.nix

@@ -6,19 +6,11 @@
     # Desktop-environment stuff.
     ./home/de.nix
   ];
-
   nixpkgs.config = {
-    permittedInsecurePackages = if config.mindtree.de.enable then
-      config.mindtree.de.permittedInsecurePkgNames
-    else
-      [ ];
-    allowUnfreePredicate = let
-      unfreeCliPkgNames = config.mindtree.cli.unfreePkgNames;
-      unfreeDePkgNames = if config.mindtree.de.enable then
-        config.mindtree.de.unfreePkgNames
-      else
-        [ ];
-      unfreePkgNames = unfreeCliPkgNames ++ unfreeDePkgNames;
-    in pkg: builtins.elem (lib.getName pkg) unfreePkgNames;
+    permittedInsecurePackages =
+      lib.lists.optional config.mindtree.de.enable config.mindtree.de.permittedInsecurePkgNames;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg)
+      (config.mindtree.cli.unfreePkgNames
+        ++ lib.lists.optional config.mindtree.de.enable config.mindtree.de.unfreePkgNames);
   };
 }

@@ -1,5 +1,6 @@
 # For cross-compiling coreaudio crates to macOS from Linux.
-with import <nixpkgs> {};
+{ pkgs, ... }:
+with pkgs;
 let
   macosx-sdk = callPackage ./macosx-sdk.nix {};
 in

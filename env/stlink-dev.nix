@@ -11,7 +11,8 @@
 # ```
 #
 # Once updated, ensure that the program is closed before trying to run `cargo flash`.
-with import <nixpkgs> {};
+{ pkgs, ... }:
+with pkgs;
 stdenv.mkDerivation {
   name = "stlink-dev-env";
   buildInputs = [
